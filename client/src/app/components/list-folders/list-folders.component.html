@@ -1,0 +1,101 @@
+<ng-container *ngIf="dossiers && dossiers.length > 0; else noFolders">
+  <table class="folder-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Documents</th>
+        <th>Size</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let dossier of dossiers; let i = index">
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>                
+            <ng-container *ngIf="editIndex==i; else noEdit">
+              <input id="name" [(ngModel)]="newName" name="name"/>
+            </ng-container>
+            <ng-template #noEdit>{{ dossier.nom }}</ng-template>    
+          </td>
+          <td>{{ dossier.documents.length }}</td>
+          <td>{{ calculateFolderSize(dossier) }} bytes</td>
+          <td>
+            <ng-container *ngIf="editIndex==i; else noEditButton">
+              <button type="button" (click)="saveChanges()">Save Changes</button>
+              <button type="button" (click)="cancelEdit()">Cancel</button>
+            </ng-container>  
+            <ng-template #noEditButton>
+              <button type="button" class="edit" (click)="editFolder(i)">Edit</button>
+              <button type="button" class="delete" (click)="deleteFolder(dossier)">Delete</button>
+              <button type="button" class="view" (click)="viewDocuments(dossier)">View Documents</button>
+            </ng-template>
+          </td>
+        </tr>
+        <tr *ngIf="showModal && selectedDossier === dossier && dossier.documents.length != 0">
+          <td colspan="5">
+            <table class="nested-doc-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Extension</th>
+                  <th>Size</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let document of dossier.documents; let j = index">
+                  <td>{{ j + 1 }}</td>
+                  <td>
+                    <ng-container *ngIf="docIndex == j; else noEdit1">
+                        <input id="name" [(ngModel)]="dossier.documents[docIndex].chemin.identificateur" name="name"/>
+                    </ng-container>
+                    <ng-template #noEdit1>{{ document.chemin.identificateur }}</ng-template>    
+                  </td>
+                  <td>
+                      <ng-container *ngIf="docIndex == j; else noEdit2">
+                          <select id="extension" name="extension" [(ngModel)]="dossier.documents[docIndex].chemin.extension">
+                              <option value="txt">txt</option>
+                              <option value="doc">doc</option>
+                              <option value="ppt">ppt</option>
+                              <option value="jpg">jpg</option>
+                              <option value="mp3">mp3</option>
+                              <option value="mp4">mp4</option>
+                              <option value="other">other</option>
+                          </select>
+                      </ng-container>
+                      <ng-template #noEdit2>{{ document.chemin.extension }}</ng-template>
+                  </td>
+                  <td>
+                    <ng-container *ngIf="docIndex == j; else noEdit3">
+                        <input id="size" type="number" [(ngModel)]="dossier.documents[docIndex].taille" name="size"/>
+                    </ng-container>
+                    <ng-template #noEdit3>{{ document.taille }} bytes</ng-template>   
+                  </td>
+                  <td>
+                    <ng-container *ngIf="docIndex == j; else noEdit4">
+                      <button type="button" (click)="saveDocument(dossier)">Save Changes</button>
+                      <button type="button" (click)="cancelDocument()">Cancel</button>
+                    </ng-container>
+                    <ng-template #noEdit4>
+                      <button type="button" class="edit" (click)="editDocument(dossier, j)">Edit</button>
+                      <button type="button" class="delete" (click)="deleteDocument(document, dossier)">Delete</button>
+                    </ng-template>      
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+        <tr *ngIf="showModal && selectedDossier === dossier && dossier.documents.length == 0">
+          <p class="no-folders-message">This folder has no documents.</p>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</ng-container> 
+<ng-template #noFolders>
+  <p class="no-folders-message">You have no folders.</p>
+</ng-template>

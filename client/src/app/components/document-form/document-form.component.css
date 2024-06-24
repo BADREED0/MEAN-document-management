@@ -1,0 +1,80 @@
+form {
+    max-width: 400px;
+    margin: auto;
+}
+  
+h2 {
+    text-align: center;
+    color: #333; 
+}
+  
+.group {
+    margin-bottom: 20px;
+}
+  
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+    color: #333; 
+    font-weight: bold;
+}
+  
+input, select {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+}
+  
+.error {
+    color: #e74c3c;
+    margin-top: 0px; 
+    margin-left: 10px;
+    font-weight: bold;
+    font-size: small;
+}
+  
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #3498db; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+  
+button:disabled {
+    background-color: #95a5a6; 
+    cursor: not-allowed;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9;
+}
+  
+button:disabled:hover {
+  background-color: #95a5a6; 
+}
+
+.message {
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+.message p {
+    font-size: 16px;
+    color: #3498db;
+    font-weight: 600;
+}
+
+.error_add {
+    color: #e74c3c;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+}

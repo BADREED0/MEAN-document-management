@@ -1,0 +1,48 @@
+<form #addDocument = "ngForm" (ngSubmit)="submitForm()">
+    <h2>Add new document</h2>
+    <div class="group">
+        <label for="emplacement">Location</label>
+        <input type="text" id="emplacement" name="emplacement" [(ngModel)]="emplacement" required>
+        <div *ngIf="addDocument.controls['emplacement'].hasError('required') && addDocument.controls['emplacement'].touched">
+            <p class="error">This field is required</p>
+        </div>
+    </div>
+
+    <div class="group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="name" pattern="^[a-zA-Z_][a-zA-Z0-9_$@-]*$" required>
+        <div *ngIf="addDocument.controls['name'].hasError('required') && addDocument.controls['name'].touched">
+            <p class="error">This field is required</p>
+        </div>
+        <div *ngIf="addDocument.controls['name'].hasError('pattern') && addDocument.controls['name'].touched">
+            <p class="error">Invalid name</p>
+        </div>
+    </div>
+    <div class="group">
+        <label for="extension">Extension</label>
+        <select id="extension" name="extension" [(ngModel)]="extension" required>
+            <option value="txt">txt</option>
+            <option value="doc">doc</option>
+            <option value="ppt">ppt</option>
+            <option value="jpg">jpg</option>
+            <option value="mp3">mp3</option>
+            <option value="mp4">mp4</option>
+            <option value="other">other</option>
+        </select>
+    </div>
+    <div class="group">
+        <label for="size">Size</label>
+        <input type="number" id="size" name="size" [(ngModel)]="size" required minlength="8">
+        <div *ngIf="addDocument.controls['size'].hasError('required') && addDocument.controls['size'].touched">
+            <p class="error">This field is required</p>
+        </div>
+    </div>
+    <button type="submit" [disabled]="addDocument.invalid">Add</button>
+    <div class="message" *ngIf="message">
+        <p>{{ message }}</p>
+    </div>
+    <div *ngIf="error">
+        <p class="error_add"> {{ error }}</p>
+    </div>
+</form>
+

@@ -1,0 +1,63 @@
+<ng-container *ngIf="documents && documents.length > 0; else noDocuments">
+    <table class="doc-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Location</th>
+          <th>Name</th>
+          <th>Extension</th>
+          <th>Type</th>
+          <th>Size</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let document of documents; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td> {{ document.chemin.emplacement }} </td>
+            <td>
+                <ng-container *ngIf="editIndex == i; else noEdit1">
+                    <input id="name" [(ngModel)]="documents[editIndex].chemin.identificateur" name="name"/>
+                </ng-container>
+                <ng-template #noEdit1>{{ document.chemin.identificateur }}</ng-template>    
+            </td>
+            <td>
+                <ng-container *ngIf="editIndex == i; else noEdit2">
+                    <select id="extension" name="extension" [(ngModel)]="documents[editIndex].chemin.extension">
+                        <option value="txt">txt</option>
+                        <option value="doc">doc</option>
+                        <option value="ppt">ppt</option>
+                        <option value="jpg">jpg</option>
+                        <option value="mp3">mp3</option>
+                        <option value="mp4">mp4</option>
+                        <option value="other">other</option>
+                    </select>
+                </ng-container>
+                <ng-template #noEdit2>{{ document.chemin.extension }}</ng-template>
+            </td>
+            <td>{{ document.type }}</td>
+            <td>
+                <ng-container *ngIf="editIndex == i; else noEdit3">
+                    <input id="size" type="number" [(ngModel)]="documents[editIndex].taille" name="size"/>
+                </ng-container>
+                <ng-template #noEdit3>{{ document.taille }} bytes</ng-template>   
+            </td>
+            <td>
+                <ng-container *ngIf="editIndex == i; else noEdit4">
+                    <button type="button" (click)="saveChanges()">Save Changes</button>
+                    <button type="button" (click)="cancelEdit()">Cancel</button>
+                </ng-container>         
+                <ng-template #noEdit4>   
+                    <button type="button" class="edit" (click)="editDocument(i)">Edit</button>
+                    <button type="button" class="delete" (click)="deleteDocument(document)">Delete</button>
+                </ng-template>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+</ng-container>
+
+<ng-template #noDocuments>
+    <p class="no-documents-message">You have no documents.</p>
+</ng-template>
+  

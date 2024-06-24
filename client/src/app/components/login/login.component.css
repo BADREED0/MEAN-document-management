@@ -1,0 +1,90 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f8;
+    font-family: 'Roboto', sans-serif;
+}
+
+form {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #fff; 
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+  
+.group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    ;
+}
+
+.group {
+    margin-bottom: 20px;
+}
+  
+.group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    
+}
+  
+button {
+    width: 100%;
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+  
+button:hover {
+    background-color: #45a049;
+}
+
+.error {
+    color: #e74c3c;
+    font-size: small;
+    font-weight: bold;
+    font-family: 'Arial', 'Helvetica', sans-serif;
+    margin-left: 10px;
+}
+
+.signup {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+.errorMess {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+}
+
+button:disabled {
+    background-color: #ccc;    
+    cursor: not-allowed;
+}

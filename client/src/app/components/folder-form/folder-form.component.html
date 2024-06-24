@@ -1,0 +1,20 @@
+<form #addFolder = 'ngForm' (ngSubmit)="submitForm()">
+    <h2>Add new folder</h2>
+    <div class="group">
+        <label for="name">Folder name</label>
+        <input type="text" id="name" name="name" [(ngModel)]="folder_name" pattern="^[a-zA-Z_][a-zA-Z0-9_$@-]*$" required>
+        <div *ngIf="addFolder.controls['name'].hasError('required') && addFolder.controls['name'].touched">
+            <p class="error">This field is required</p>
+        </div>
+        <div *ngIf="addFolder.controls['name'].hasError('pattern') && addFolder.controls['name'].touched">
+            <p class="error">Invalid name</p>
+        </div>
+    </div>
+    <button type="submit" [disabled]="addFolder.invalid">Add</button>
+    <div class="message" *ngIf="message">
+        <p>{{ message }}</p>
+    </div>
+    <div *ngIf="error">
+        <p class="error_add"> {{ error }}</p>
+    </div>
+</form>

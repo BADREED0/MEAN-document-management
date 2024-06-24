@@ -1,0 +1,121 @@
+.folder-table {
+  width: 98%;
+  border-collapse: collapse;
+  margin: 20px auto auto auto;
+}
+  
+  .folder-table th, .folder-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .folder-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .folder-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .folder-table td button {
+    padding: 8px 12px;
+    margin-right: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .folder-table td .edit {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .folder-table td .delete {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
+  .folder-table td .view {
+    background-color: #2ecc71;
+    color: #fff;
+  }
+  
+  .folder-table td button:hover {
+    background-color: #555;
+  }
+  
+.nested-doc-table {
+  width: 80%; 
+  border-collapse: collapse;
+  margin-top: 0px;
+  margin-left: 62px;
+}
+
+.nested-doc-table th, .nested-doc-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.nested-doc-table th {
+  background-color: #f2f2f2;
+}
+
+.nested-doc-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+.nested-doc-table td button {
+  padding: 4px 8px;
+  margin-right: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+  font-size: 12px;
+}
+
+.nested-doc-table td .edit {
+  background-color: #3498db;
+  color: #fff;
+}
+
+.nested-doc-table td .delete {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.nested-doc-table td .view {
+  background-color: #2ecc71;
+  color: #fff;
+}
+
+.nested-doc-table td button:hover {
+  background-color: #555;
+}
+
+.folder-table td input {
+  width: 100%; 
+  padding: 8px; 
+  box-sizing: border-box;
+}
+
+
+.folder-table td button {
+  margin-top: 5px; 
+}
+
+.no-folders-message {
+  font-style: italic;
+  color: #888;
+  padding: 8px;
+  border: 1px solid #ddd;
+  text-align: center;
+  background-color: #f2f2f2;
+  border-radius: 3px;
+  margin: 20px auto;
+}

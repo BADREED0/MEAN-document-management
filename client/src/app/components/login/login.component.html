@@ -1,0 +1,27 @@
+<form #authentification = "ngForm" (ngSubmit)="submitForm()">
+    <h2>Login to your account</h2>
+    <div class="group">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" [(ngModel)]="email" required email>
+        <div *ngIf="authentification.controls['email'].hasError('required') && authentification.controls['email'].touched">
+            <p class="error">This field is required</p>
+        </div>
+        <div *ngIf="authentification.controls['email'].hasError('email') && authentification.controls['email'].touched">
+            <p class="error">Invalid E-mail</p>
+        </div>
+    </div>
+    <div class="group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="password" required>
+        <div *ngIf="authentification.controls['password'].hasError('required') && authentification.controls['password'].touched">
+            <p class="error">This field is required</p>
+        </div>
+    </div>
+    <button type="submit" [disabled]="authentification.invalid">Login</button>
+    <div class="errorMess" *ngIf="error">
+        <p class="error">{{ error }}</p>
+    </div>
+    <div class="signup">
+        <p>Don't have an account? <a routerLink="/signup">Sign-up</a></p>
+    </div>
+</form>

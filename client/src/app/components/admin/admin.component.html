@@ -1,0 +1,30 @@
+<nav class="navbar">
+    <div class="brand">User Management</div>
+    <a class="logout" routerLink="/login">Logout</a>
+</nav>
+<table class="user-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.accountStatus }}</td>
+            <td>
+                <button type="button" [ngClass]="{'activate': user.accountStatus === 'suspended', 'suspend': user.accountStatus === 'active'}" (click)="changeStatus(user)">
+                    <span *ngIf="user.accountStatus === 'suspended'">Activate</span>
+                    <span *ngIf="user.accountStatus === 'active'">Suspend</span>
+                </button>
+                <button type="button" class="delete" (click)="deleteUser(user)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
